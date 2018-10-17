@@ -1,9 +1,5 @@
 homeassistant:
-<<<<<<< HEAD
   name: Hjemme
-=======
-  name: Home
->>>>>>> 91c1d2f62f1139571597468121f351ba5c8d33ae
   latitude: !secret latitude
   longitude: !secret longitude
   elevation: 168
@@ -11,7 +7,6 @@ homeassistant:
   time_zone: Europe/Oslo
   customize: !include customize.yaml
 
-<<<<<<< HEAD
 zone: !include zones.yaml
 
 zwave:
@@ -25,77 +20,12 @@ nest: !include services/nest.yaml
 tibber: !include services/tibber.yaml
 
 #INCLUDES
-=======
-zone:
-  name: Skole
-  latitude: !secret latitude_skole
-  longitude: !secret longitude_skole
-  radius: 250
-  icon: mdi:school
-
-zone 2:
-  name: Work
-  latitude: !secret latitude_work
-  longitude: !secret longitude_work
-  radius: 250
-  icon: mdi:domain  
-
-zone 3:
-  name: Gardermoen
-  latitude: 60.1900943
-  longitude: 11.1051765
-  radius: 1500
-  icon: mdi:airplane-takeoff
- 
-# Text to speech
-tts:
-  - platform: google
-    language: 'no'
-       
-zwave:
-  usb_path: /dev/ttyACM0
-#  device_config: !include zwave_device_config.yaml
-#  new_entity_ids: true 
-
-tradfri:
-http:
-  api_password: !secret api_password
-  # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
- 
-mqtt:
-  broker: core-mosquitto
-  username: !secret mqtt_username
-  password: !secret mqtt_password
-
-device_tracker:
-  - platform: unifi
-    host: unifi
-    username: !secret unifi_username
-    password: !secret unifi_password
-
-#apple_tv:
-#  name: Apple TV
-#  login_id: !secret apple_tv_login_id
-
-homekit:
-  auto_start: False
-  filter:
-    include_entities:
-      - switch.tumble_dryer_switch
-      - switch.washing_machine_switch
-    include_domains:
-      - light
-#INCLUDES
-
->>>>>>> 91c1d2f62f1139571597468121f351ba5c8d33ae
 automation: !include automations.yaml
 automation old: !include_dir_merge_list automation
 climate: !include climate.yaml
 sensor: !include sensors.yaml
 group: !include groups.yaml
 scene: !include scenes.yaml
-<<<<<<< HEAD
 remote: !include remotes.yaml
 input_boolean: !include input_boolean.yaml
 input_select: !include input_select.yaml
@@ -108,21 +38,6 @@ device_tracker: !include device_trackers.yaml
 #notify: !include notify.yaml
 #media_player: !include media_players.yaml
 #camera: !include cameras.yaml
-=======
-#notify: !include notify.yaml
-media_player: !include media_players.yaml
-#camera: !include cameras.yaml
-remote: !include remotes.yaml
-input_boolean: !include input_boolean.yaml
-input_select: !include input_select.yaml
-#device_tracker: !include device_trackers.yaml
-light: !include lights.yaml
-binary_sensor: !include binary_sensors.yaml
-switch: !include switches.yaml
-#input_select: !include input_select.yaml
-#script: !include scripts.yaml
-
->>>>>>> 91c1d2f62f1139571597468121f351ba5c8d33ae
 
 #Enables
 sun:
@@ -140,12 +55,4 @@ ios:
 hassio:
 map:
 influxdb:
-<<<<<<< HEAD
 panel_iframe: !include panel_iframe.yaml
-=======
-panel_iframe:
-  grafana:
-    title: 'Grafana'
-    icon: mdi:elevation-rise
-    url: !secret grafana_url
->>>>>>> 91c1d2f62f1139571597468121f351ba5c8d33ae
