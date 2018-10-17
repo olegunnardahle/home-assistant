@@ -1,0 +1,161 @@
+﻿#############STUE####
+binary_sensor.multisensor_spisestue_sensor:
+  friendly_name: "Bevegelse"
+  icon: mdi:run-fast     
+sensor.multisensor_spisestue_luminance:
+  friendly_name: "Lysstyrke"
+  icon: mdi:brightness-7
+sensor.multisensor_spisestue_relative_humidity:
+  friendly_name: "Luftfuktighet"
+  icon: mdi:water
+sensor.multisensor_spisestue_temperature:
+  friendly_name: "Temperatur"
+  icon: mdi:thermometer
+sensor.multisensor_spisestue_alarm_level:
+  hidden: true
+sensor.multisensor_spisestue_alarm_type:
+  hidden: true
+sensor.multisensor_spisestue_sourcenodeid:
+  hidden: true
+sensor.multisensor_spisestue_ultraviolet:
+  hidden: true
+sensor.multisensor_spisestue_battery_level:
+  hidden: true     
+sensor.multisensor_spisestue_burglar:
+  hidden: true
+switch.panelovn_stue_switch:
+  friendly_name: "Varme stue"
+  icon: mdi:fire
+light.lys_spisestue_level:
+  friendly_name: "Spisetue"
+sensor.lys_spisestue_alarm_level:
+  hidden: true
+sensor.lys_spisestue_alarm_type:
+  hidden: true
+sensor.lys_spisestue_power_management:
+  hidden: true
+sensor.lys_spisestue_sourcenodeid:
+  hidden: true
+scene.light_stue_on:
+  icon: mdi:lightbulb-on-outline
+  friendly_name: Lys på
+scene.light_stue_off:
+  icon: mdi:weather-night
+  friendly_name: Lys av       
+#############YR####
+sensor.yr_symbol:
+  friendly_name: "Varsel"   
+sensor.yr_cloudiness:
+  friendly_name: "Skyer"
+  icon: mdi:weather-cloudy
+sensor.yr_fog:
+  friendly_name: "Tåke"
+  icon: mdi:weather-fog
+sensor.yr_humidity:
+  friendly_name: "Luftfuktighet"
+  icon: mdi:water
+sensor.yr_precipitation:
+  friendly_name: "Nedbør"
+  icon: mdi:weather-rainy
+sensor.yr_pressure:
+  friendly_name: "Lufttrykk"
+sensor.yr_temperature:
+  friendly_name: "Temperatur"
+  icon: mdi:temperature-celsius
+sensor.yr_wind_direction:
+  friendly_name: "Vindreting"
+  icon: mdi:compass-outline
+sensor.yr_wind_speed:
+  friendly_name: "Vindhastighet"
+  icon: mdi:weather-windy 
+input_boolean.washing_machine_on:
+  friendly_name: "Vasker"
+  icon: mdi:washing-machine
+input_boolean.tumble_dryer_on:
+  friendly_name: "Tørker"
+  icon: mdi:washing-machine
+############VASKEMASKIN###############
+sensor.washing_machine_alarm_level:
+  hidden: true
+sensor.washing_machine_alarm_type:
+  hidden: true
+sensor.washing_machine_energy:
+  hidden: true
+sensor.washing_machine_exporting:
+  hidden: true
+sensor.washing_machine_power:
+  friendly_name: "Forbruk"
+  icon: mdi:power-plug
+sensor.washing_machine_power_2:
+  friendly_name: "Gjennomsittsforbruk"
+  icon: mdi:power-plug
+  hidden: true
+sensor.washing_machine_power_management:
+  hidden: true
+sensor.washing_machine_sourcenodeid:
+  hidden: true
+switch.washing_machine_switch:
+  friendly_name: "AV/PÅ"
+  icon: mdi:power
+sensor.washing_machine_state:
+  friendly_name: "Status"
+  icon: mdi:washing-machine
+group.washing_machine:
+  friendly_name: "Vaskemaskin"
+##TØRKETROMMEL
+sensor.tumble_dryer_alarm_level:
+  hidden: true
+sensor.tumble_dryer_alarm_type:
+  hidden: true
+sensor.tumble_dryer_energy:
+  hidden: true
+sensor.tumble_dryer_exporting:
+  hidden: true
+sensor.tumble_dryer_power:
+  friendly_name: "Forbruk"
+  icon: mdi:power-plug
+sensor.tumble_dryer_power_2:
+  friendly_name: "Gjennomsittsforbruk"
+  icon: mdi:power-plug
+  hidden: true
+sensor.tumble_dryer_power_management:
+  hidden: true
+sensor.tumble_dryer_sourcenodeid:
+  hidden: true
+switch.tumble_dryer_switch:
+  friendly_name: "AV/PÅ"
+  icon: mdi:power
+sensor.tumble_dryer_state:
+  friendly_name: "Status"
+  icon: mdi:washing-machine
+group.tumble_dryer:
+  friendly_name: "Tørketrommel"
+sensor.mqtt_test_1:
+  friendly_name: "Ladestatus"
+  icon: mdi:car-battery
+
+sensor.terrasse_alarm_level:
+  hidden: true
+sensor.terrasse_alarm_type:
+  hidden: true
+sensor.terrasse_energy:
+  friendly_name: "Totalforbruk"
+sensor.terrasse_exporting:
+  hidden: true
+sensor.terrasse_heat:
+  hidden: true
+sensor.terrasse_power:
+  friendly_name: "Strømforbruk"
+sensor.terrasse_power_2:
+  hidden: true
+sensor.terrasse_power_management:
+  hidden: true
+sensor.terrasse_sourcenodeid:
+  hidden: true
+sensor.terrasse_system:
+  hidden: true
+light.terrasse_level:
+  friendly_name: "Lysstyrke"
+  icon: mdi:lightbulb
+light.terrasse_step_size:
+  hidden: true

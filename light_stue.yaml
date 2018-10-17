@@ -1,0 +1,69 @@
+- alias: Stue Enable Motion Trigger 
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: '-01:00:00'
+    - platform: numeric_state
+      entity_id: sensor.aeotec_zw100_multisensor_6_luminance_2_3
+      below: 25
+  condition:
+    - condition: numeric_state
+      entity_id: light.everspring_ad146_in_wall_dimmer_module_level_4_0
+    # if light is off, force a 0, otherwise use the brightness value
+      value_template: '{% if states.light.everspring_ad146_in_wall_dimmer_module_level_4_0.state == "on"  %}{{ states.light.everspring_ad146_in_wall_dimmer_module_level_4_0.brightness }}{% else %}1{% endif %}'
+    # brightness below 50% (255 = 100%)
+      below: 127
+  action: 
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.trigger_first_motion_after_sunset_stue
+- alias: Stue Disable Motion Trigger
+  trigger:
+    - platform: sun
+      event: sunrise
+      offset: "01:00:00"
+  action: 
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.trigger_first_motion_after_sunset_stue
+      
+      
+- alias: Stue Automatisk lys
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.aeotec_zw100_multisensor_6_sensor_2_0
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.trigger_first_motion_after_sunset_stue
+      state: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.trigger_first_motion_after_sunset_stue   
+    - condition: numeric_state
+      entity_id: light.everspring_ad146_in_wall_dimmer_module_level_4_0
+    # if light is off, force a 0, otherwise use the brightness value
+      value_template: '{% if states.light.everspring_ad146_in_wall_dimmer_module_level_4_0.state == "on"  %}{{ states.light.everspring_ad146_in_wall_dimmer_module_level_4_0.brightness }}{% else %}1{% endif %}'
+    # brightness below 50% (255 = 100%)
+      below: 127
+    - service: scene.turn_on
+      entity_id: scene.light_stue_on
+
+# skrur av alt lys hvis et lys blir skrudd av etter 21      
+- alias: Skru av lys stue
+  trigger:
+    - platform: state
+      entity_id: light.everspring_ad146_in_wall_dimmer_module_level_4_0
+      state: "off" 
+    - platform: state
+      entity_id: light.hjrnelampe
+      state: "off" 
+    - platform: state
+      entity_id: light.tine_k
+      state: "off" 
+  condition:
+    - condition: time
+      after: "21:00"
+  action:
+    - service: scene turn_on
+      entity_id: scene.light_stue_off
+    
+   

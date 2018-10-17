@@ -1,0 +1,7 @@
+auto_start: False
+filter:
+  include_entities:
+    - switch.tumble_dryer_switch
+    - switch.washing_machine_switch
+  include_domains:
+    - light

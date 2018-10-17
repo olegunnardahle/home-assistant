@@ -1,0 +1,62 @@
+- alias: 'Vaskemaskin startet'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.washing_machine_power
+      above: 100
+  action:
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.washing_machine_on
+- alias: 'Vaskemaskin stoppet'
+  trigger:
+    - platform: state
+      entity_id: sensor.washing_machine
+      to: 'False'
+      for:
+        minutes: 4
+  condition:  
+    - condition: state
+      entity_id: input_boolean.washing_machine_on
+      state: 'on'      
+  action:
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.washing_machine_on
+    - service: notify.ios_ole_gunnar
+      data:
+        title: 'Vaskemaskin ferdig'
+        message: '{{now().strftime("%d.%m.%Y-%H:%M:%S")}}'
+    - service: notify.ios_marianne
+      data:
+        title: 'Vaskemaskin ferdig'
+        message: '{{now().strftime("%d.%m.%Y-%H:%M:%S")}}'
+
+## TØRKETROMMEL##
+- alias: 'Tørketrommel startet'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.tumble_dryer_power
+      above: 500
+  action:
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.tumble_dryer_on
+- alias: 'Tørketrommel stoppet'
+  trigger:
+    - platform: state
+      entity_id: sensor.tumble_dryer
+      to: 'False'
+      for:
+        seconds: 30  
+  condition:  
+    - condition: state
+      entity_id: input_boolean.tumble_dryer_on
+      state: 'on'  
+  action:
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.tumble_dryer_on
+    - service: notify.ios_ole_gunnar
+      data:
+        title: 'Tørketrommel ferdig'
+        message: '{{now().strftime("%d.%m.%Y-%H:%M:%S")}}'
+    - service: notify.ios_marianne
+      data:
+        title: 'Tørketrommel ferdig'
+        message: '{{now().strftime("%d.%m.%Y-%H:%M:%S")}}'

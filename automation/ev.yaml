@@ -1,0 +1,8 @@
+- alias: EV lademodus
+  trigger:
+    platform: state
+    entity_id: input_select.charging_current
+  action:
+    - service: scene.turn_on
+      data_template:
+        entity_id: scene.ev1_{{trigger.to_state.state}}

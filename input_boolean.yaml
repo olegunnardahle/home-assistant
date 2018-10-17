@@ -1,0 +1,4 @@
+washing_machine_on:
+  initial: off
+tumble_dryer_on:
+  initial: off

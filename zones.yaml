@@ -1,0 +1,15 @@
+- name: Skole
+  latitude: !secret latitude_skole
+  longitude: !secret longitude_skole
+  radius: 250
+  icon: mdi:school
+- name: Work
+  latitude: !secret latitude_work
+  longitude: !secret longitude_work
+  radius: 250
+  icon: mdi:domain  
+- name: Gardermoen
+  latitude: 60.1900943
+  longitude: 11.1051765
+  radius: 1500
+  icon: mdi:airplane-takeoff

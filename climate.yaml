@@ -1,0 +1,13 @@
+# STUE
+- platform: generic_thermostat
+  name :  Termostat stue
+  heater :  group.varme_stue
+  target_sensor : sensor.multisensor_spisestue_temperature
+  target_temp : 22
+  min_temp : 18
+  max_temp : 25
+  cold_tolerance: 0.3
+  hot_tolerance: 0
+  initial_operation_mode: "auto"
+  keep_alive:
+    days: 365

@@ -1,0 +1,321 @@
+#default_view:
+#  view: yes
+#  icon: mdi:home
+#  entities:
+#    - group.marianne
+#    - group.josefine
+#    - group.ole_gunnar
+#    - group.washing_machine
+#    - group.tumble_dryer
+#    - group.ev1
+#    - group.lys
+Stue_view:
+  view: yes
+  name: Stue
+  icon: mdi:sofa
+  entities:
+    - group.stue
+    - media_player.stue
+    - group.lys_stue
+    - scene.light_stue_on
+    - scene.light_stue_off
+    - climate.termostat_stue
+Media_view:
+  view: yes
+  name: Media
+  icon: mdi:speaker
+  entities:
+    - media_player.spotify
+    - media_player.kjkken
+    - media_player.upstairs
+    - media_player.stue
+    - media_player.apple_tv
+tvstue_view:
+  view: yes
+  name: Tv stue
+  icon: mdi:television
+  entities:
+    - group.tv
+    - sensor.tv_titting
+    - media_player.apple_tv
+    - remote.apple_tv
+    - remote.tv
+kamera_view:
+  view: yes
+  name: Kamera
+  icon: mdi:video
+  entities:
+    - camera.parkering
+    - camera.fuglemater
+light_view:
+  view: yes
+  name: Lys
+  icon: mdi:lightbulb
+  entities:
+    - group.lys_stue
+    - group.terrasse
+temperatur_view:
+  view: yes
+  name: Temperatur
+  icon: mdi:thermometer-lines
+  entities:
+    - sensor.yr_temperature
+    - group.varme_stue
+
+teknisk_view:
+  view: yes
+  name: Teknisk
+  icon: mdi:settings
+  entities:
+    - group.boolean
+    - group.automation
+    - group.raspberry
+    - group.speedtest
+    - group.zw
+    - group.sensor_testsensor_card
+
+temp_view:
+  view: yes
+  name: Temporary
+  icon: mdi:worker
+  entities:
+    - group.MQTT_test
+    - group.sensor_testsensor_card
+################GROUPS################    
+Stue:
+  - binary_sensor.multisensor_spisestue_sensor
+  - sensor.multisensor_spisestue_luminance
+  - sensor.multisensor_spisestue_relative_humidity
+  - sensor.multisensor_spisestue_temperature
+  - climate.termostat_stue
+  - sensor.multisensor_spisestue_ultraviolet
+  
+YR:
+  - sensor.yr_symbol
+  - sensor.yr_temperature
+  - sensor.yr_precipitation
+  - sensor.yr_cloudiness
+  - sensor.yr_fog
+  - sensor.yr_wind_speed  
+  - sensor.yr_wind_direction
+  - sensor.yr_humidity
+  - sensor.yr_pressure
+  - sun.sun
+
+Varme_stue:
+  name: Varme stue
+  entities:
+  - switch.panelovn_stue_switch
+  - climate.termostat_stue
+  
+lys:
+  name: "Lys"
+  entities:
+  - group.lys_stue
+  - group.lys_tvstue
+  - group.terrasse
+  
+Lys_stue:
+  name: Lys stue
+  entities:
+  - light.lys_spisestue_level
+  - light.stue_stalampe
+  - light.stue_taklampe
+  - scene.light_stue_on
+  - scene.light_stue_max
+  - scene.light_stue_off
+
+Lys_TVstue:
+  name: "Lys TV-stue"
+  entities:
+  - light.tvstue_taklampe
+  - light.tvstue_hjrnelampe
+
+Boolean:
+  - input_boolean.trigger_first_motion_after_sunset_stue
+  - input_boolean.washing_machine_on
+  - input_boolean.tumble_dryer_on
+  
+Automation:
+  - automation.dagtemp_uke
+  - automation.ev1_detect_blue_flash
+  - automation.ev1_detect_red_flash
+  - automation.ev1_status_a
+  - automation.ev1_status_b
+  - automation.ev1_status_c
+  - automation.ev1_status_d
+  - automation.ev1_status_f
+  - automation.ev1_turn_off_blue_flash
+  - automation.ev1_turn_off_red_flash
+  - automation.ev_10a
+  - automation.ev_16a
+  - automation.ev_20a
+  - automation.ev_25a
+  - automation.ev_32a
+  - automation.ev_off
+  - automation.high_light
+  - automation.josefine_reiser_fra_skolen
+  - automation.low_light
+  - automation.motion_detected
+  - automation.motion_standby
+  - automation.nattemp_stue
+  - automation.oppdater_lokasjon
+  - automation.oppdater_lokasjon_2
+  - automation.oppdatering_tilgjengelig
+  - automation.skru_av_lys_stue
+  - automation.stue_automatisk_lys
+  - automation.stue_disable_motion_trigger
+  - automation.stue_enable_motion_trigger
+  - automation.trketrommel_startet
+  - automation.trketrommel_stoppet
+  - automation.vaskemaskin_startet
+  - automation.vaskemaskin_stoppet
+  - automation.terrasselys_dag
+  - automation.terrasselys_kveld
+  - automation.terrasselys_natt
+  
+Hass.io:
+  - sensor.processor_use
+  - sensor.disk_use_percent_
+  - sensor.memory_free
+  - sensor.network_in_eth0
+  - sensor.network_out_eth0
+  - sensor.last_boot
+
+nest:
+  - sensor.upstairs_nest_protect_color_status
+  - binary_sensor.upstairs_nest_protect_online
+  - sensor.upstairs_nest_protect_battery_health
+  - sensor.upstairs_nest_protect_co_status
+  - sensor.upstairs_nest_protect_smoke_status
+  - sensor.entryway_nest_protect_color_status
+  - binary_sensor.entryway_nest_protect_online
+  - sensor.entryway_nest_protect_battery_health
+  - sensor.entryway_nest_protect_co_status
+  - sensor.entryway_nest_protect_smoke_status
+  - sensor.hjemme_eta
+  - binary_sensor.hjemme_away
+
+
+Speedtest:
+  - sensor.speedtest_download
+  - sensor.speedtest_ping
+  - sensor.speedtest_upload
+
+washing_machine:
+  - sensor.washing_machine_alarm_level
+  - sensor.washing_machine_alarm_type
+  - sensor.washing_machine_energy
+  - sensor.washing_machine_exporting
+  - sensor.washing_machine_power
+  - sensor.washing_machine_power
+  - sensor.washing_machine_power_management
+  - sensor.washing_machine_sourcenodeid
+  - switch.washing_machine_switch
+  - sensor.washing_machine_state
+
+tumble_dryer:
+  - sensor.tumble_dryer_alarm_level
+  - sensor.tumble_dryer_alarm_type
+  - sensor.tumble_dryer_energy
+  - sensor.tumble_dryer_exporting
+  - sensor.tumble_dryer_power
+  - sensor.tumble_dryer_power
+  - sensor.tumble_dryer_power_management
+  - sensor.tumble_dryer_sourcenodeid
+  - switch.tumble_dryer_switch
+  - sensor.tumble_dryer_state
+  
+tv:
+  name: TV-stue
+  entities:
+  - sensor.tv_titting_siste_24
+  - sensor.tv_titting_siste_uke
+  
+marianne:
+  name: "Marianne"
+  entities:
+  - device_tracker.marianne
+  - sensor.marianne_sin_iphone_battery_level
+  - sensor.marianne_sin_iphone_battery_state
+
+josefine:
+  name: "Josefine"
+  entities:
+  - device_tracker.josefine
+  - sensor.josefine_sin_iphone_battery_level
+  - sensor.josefine_sin_iphone_battery_state
+
+ole_gunnar:
+  name: "Ole Gunnar"
+  entities:
+  - device_tracker.ole_gunnar
+  - sensor.ole_gunnar_sin_iphone_battery_level
+  - sensor.ole_gunnar_sin_iphone_battery_state
+  
+zw:
+  name: "Z-Wave"
+  entities:
+  - zwave.aeotec_zw090_zstick_gen5_eu
+  - zwave.multisensor_spisestue
+  - zwave.lys_spisestue
+  - zwave.washing_machine
+  - zwave.tumble_dryer
+  - zwave.panelovn_stue
+  - zwave.terrasse
+  
+
+sensor_testsensor_card:  
+  name: "TESTSENSOR"
+  entities:  
+  - sensor.testsensor_temperature  
+  - sensor.testsensor_humidity  
+  - sensor.testsensor_ldr  
+  - sensor.testsensor_pir  
+  - light.testsensor_led
+MQTT_test:
+  name: "MQTT Test"
+  entities:
+  - sensor.mqtt_test_1
+  - sensor.mqtt_test_2
+  - sensor.mqtt_test_3
+  - sensor.mqtt_test_4
+  - switch.mqtt_switch_1
+  - switch.mqtt_switch_2
+  - switch.mqtt_switch_3
+  - switch.mqtt_switch_4
+
+ev1:
+  name: "Lader 1"
+  entities:
+  - input_select.charging_current
+  - sensor.ladestatus
+  
+terrasse:
+  name: "Terrasse"
+  entities:
+  - sensor.terrasse_alarm_level
+  - sensor.terrasse_alarm_type
+  - sensor.terrasse_energy
+  - sensor.terrasse_exporting
+  - sensor.terrasse_heat
+  - sensor.terrasse_power
+  - sensor.terrasse_power
+  - sensor.terrasse_power_management
+  - sensor.terrasse_sourcenodeid
+  - sensor.terrasse_system
+  - light.terrasse_level
+  - light.terrasse_step_size
+  - scene.terrasse_kveld
+  - scene.terrasse_natt
+  - scene.terrasse_dag
+
+netatmo:
+  name: "Netatmo"
+  entities:
+  - sensor.netatmo_public_data_gust_strength
+  - sensor.netatmo_public_data_humidity
+  - sensor.netatmo_public_data_pressure
+  - sensor.netatmo_public_data_rain
+  - sensor.netatmo_public_data_temperature
+  - sensor.netatmo_public_data_wind_strength

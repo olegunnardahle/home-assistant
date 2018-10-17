@@ -1,0 +1,10 @@
+- alias: 'Startup'
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay: 00:01
+    - service: scene.turn_on
+      entity_id: scene.ev1_20A
+    - delay: 00:04
+    - service: homekit.start

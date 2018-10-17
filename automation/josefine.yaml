@@ -1,0 +1,23 @@
+- alias: 'Josefine reiser fra skolen'
+  trigger:
+    platform: zone
+    entity_id: device_tracker.josefine
+    zone: zone.skole
+    # Event is either enter or leave
+    event: leave  # or "enter" 
+  condition:
+    condition: and
+    conditions:
+      - condition: state 
+        entity_id: 'binary_sensor.workday_sensor'
+        state: 'on'
+      - condition: time 
+        after: "12:00:00"
+        before: "15:00:00"  
+  action:
+    - service: notify.iOS_ole_gunnar
+      data:
+        message: "Josefine har reist fra skolen"
+    - service: notify.iOS_marianne
+      data:
+        message: "Josefine har reist fra skolen"

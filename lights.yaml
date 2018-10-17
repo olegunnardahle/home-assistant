@@ -1,0 +1,12 @@
+- platform: hue
+  host: 10.0.1.210
+  scan_interval: 10
+- platform: mqtt_json  
+  name: "TESTSENSOR LED"  
+  state_topic: "test/testsensor"  
+  command_topic: "test/testsensor/set"  
+  brightness: true  
+  flash: true  
+  rgb: true  
+  optimistic: false  
+  qos: 0 

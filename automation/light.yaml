@@ -1,0 +1,80 @@
+- alias: Stue Automatisk lys
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.multisensor_spisestue_sensor
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.lys_stue
+      state: 'off'
+    - condition: numeric_state
+      entity_id: sensor.multisensor_spisestue_luminance
+      below: 15
+  action:
+    - service: scene.turn_on
+      entity_id: scene.light_stue_on
+    - service: scene.turn_on
+      entity_id: scene.tv_stue_kveld
+
+# skrur av alt lys hvis et lys blir skrudd av etter 21      
+- alias: Skru av lys stue
+  trigger:
+    - platform: state
+      entity_id: light.lys_spisestue_level
+      from: "on"
+      to: "off" 
+#
+  condition:
+    - condition: time
+      after: "21:00"
+      before: '06:00'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.light_stue_off
+
+#### TERRASSE
+- alias: Terrasselys kveld 
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: '-00:30:00'
+  action: 
+    - service: scene.turn_on
+      entity_id: scene.terrasse_kveld
+- alias: Terrasselys natt 
+  trigger:
+    - platform: time
+      at: '00:00:00'
+  condition:
+    - condition: state
+      entity_id: light.terrasse_level
+      state: 'on'
+  action: 
+    - service: scene.turn_on
+      entity_id: scene.terrasse_natt
+- alias: Terrasselys dag 
+  trigger:
+    - platform: sun
+      event: sunrise
+  action: 
+    - service: scene.turn_on
+      entity_id: scene.terrasse_dag
+#### BARNEROM
+- alias: Nattlys barnerom
+  trigger:
+    - platform: time
+      at: '20:00:00'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.nattlys_barnerom
+- alias: Morgenlys barnerom
+  trigger:
+    - platform: time
+      at: '07:15:00'
+  condition:
+    - condition: state 
+      entity_id: 'binary_sensor.workday_sensor'
+      state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.nattlys_barnerom   

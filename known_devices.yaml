@@ -1,0 +1,28 @@
+
+ole_gunnar:
+  hide_if_away: false
+  icon: mdi:human-male
+  mac: 6c:ab:31:81:2a:2a
+  name: Ole Gunnar
+  gravatar:
+  picture: /local/oleg.jpg
+  track: true
+  vendor:
+
+josefine:
+  hide_if_away: false
+  icon: mdi:human-female
+  mac: 48:43:7c:6f:da:07
+  name: Josefine
+  picture: /local/josefine.jpg
+  track: true
+  vendor:
+
+marianne:
+  hide_if_away: false
+  icon: mdi:human-female
+  mac: 64:70:33:46:28:b9
+  name: Marianne
+  picture: /local/marianne.jpg
+  track: true
+  vendor:

@@ -1,0 +1,17 @@
+stue_dag:
+  name: Auto heat high
+  min: 16
+  max: 22
+  initial: 21
+  step: 0.5
+  icon: mdi:fire
+  unit_of_measurement: '°C'    
+
+Stue_natt:
+  name: Auto heat low
+  min: 16
+  max: 22
+  initial: 17
+  step: 0.5
+  icon: mdi:fire
+  unit_of_measurement: '°C'

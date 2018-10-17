@@ -1,0 +1,116 @@
+######SENSOR##########
+# Weather Prediction
+- platform: yr
+  monitored_conditions:
+    - temperature
+    - symbol
+    - precipitation
+    - windSpeed
+    - pressure
+    - windDirection
+    - humidity
+    - fog
+    - cloudiness
+- platform: systemmonitor
+  resources:
+  - type: disk_use_percent
+    arg: /
+  - type: memory_free
+  - type: processor_use
+  - type: network_in
+    arg: eth0
+  - type: network_out
+    arg: eth0
+  - type: last_boot
+- platform: template
+  sensors:
+    washing_machine:
+      value_template: "{{ states('sensor.washing_machine_power') | int > 10  }}"
+    tumble_dryer:
+      value_template: "{{ states('sensor.tumble_dryer_power') | int > 10  }}"
+    washing_machine_state:
+      value_template: '{% if is_state("input_boolean.washing_machine_on", "on") %}Vasker{% else %}Ferdig{% endif %}'
+    tumble_dryer_state:
+      value_template: '{% if is_state("input_boolean.tumble_dryer_on", "on") %}Tørker{% else %}Ferdig{% endif %}'
+- platform: mqtt  
+  state_topic: "test/testsensor"  
+  name: "Testsensor Humidity"  
+  unit_of_measurement: "%"  
+  value_template: '{{ value_json.humidity | round(1) }}'  
+
+- platform: mqtt  
+  state_topic: "test/testsensor"  
+  name: "Testsensor LDR"
+  ##This sensor is not calibrated to actual LUX. Rather, this a map of the input voltage ranging from 0 - 1023.
+  unit_of_measurement: "LUX"  
+  value_template: '{{ value_json.ldr }}'  
+  
+- platform: mqtt  
+  state_topic: "test/testsensor"
+  name: "Testsensor PIR"  
+  value_template: '{{ value_json.motion }}'  
+
+- platform: mqtt  
+  state_topic: "test/testsensor" 
+  name: "Testsensor Temperature"  
+  unit_of_measurement: "°F"  
+  value_template: '{{ value_json.temperature | round(1) }}' 
+
+- platform: mqtt
+  name: mqtt_test_4
+  state_topic: "test/button4"
+  payload_on: "1"
+  payload_off: "0"
+
+- platform: mqtt
+  state_topic: "/ev1/chargestate/"
+  name: "Ladestatus"
+
+- platform: history_stats
+  name: TV titting siste uke
+  entity_id: remote.tv
+  state: 'on'
+  type: time
+  end: '{{ now() }}'
+  duration:
+    hours: 168
+  
+- platform: history_stats
+  name: TV titting siste 24
+  entity_id: remote.tv
+  state: 'on'
+  type: time
+  end: '{{ now() }}'
+  duration:
+    hours: 24
+- platform: speedtest
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+  server_id: 13544
+
+- platform: netatmo_public
+  areas:
+    - lat_ne: 60.091
+      lon_ne: 11.096
+      lat_sw: 60.085
+      lon_sw: 11.079
+      monitored_conditions:
+        - temperature
+        - pressure
+        - humidity
+        - rain
+        - windstrength
+        - guststrength
+- platform: scrape
+  resource: http://home.liabryggeri.no:99/
+  select: "span.t2"
+  name: "Beer temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ ((value.split(" ")[0]) | replace ("ºC", "")) }}'
+- platform: scrape
+  resource: https://www.timeanddate.no/nedtelling/jul
+  name: "JUL"
+  select: "#el_d1"
+  unit_of_measurement: Days

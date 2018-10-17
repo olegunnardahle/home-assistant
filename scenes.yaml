@@ -1,0 +1,104 @@
+- name: light_stue_on
+  entities:
+    light.lys_spisestue_level:
+      state: on
+      brightness: 230
+    light.stue_taklampe:
+      state: on
+      brightness: 149
+      color_temp: 450
+    light.stue_stalampe:
+      state: on
+      brightness: 149
+      color_temp: 450
+    light.tvstue_taklampe:
+      state: on
+      brightness: 188
+      color_temp: 417
+    light.tvstue_hjrnelampe:
+      state: on
+      brightness: 154
+      color_temp: 426
+
+- name: light_stue_off
+  entities:
+    group.lys_stue:
+      state: off
+    group.lys_tvstue:
+      state: off
+
+- name: terrasse_kveld
+  entities:
+    light.terrasse_level:
+      state: on
+      brightness: 200
+- name: terrasse_natt
+  entities:
+    light.terrasse_level:
+      state: on
+      brightness: 5
+- name: terrasse_dag
+  entities:
+    light.terrasse_level:
+      state: off
+      
+- name: ev1_AV
+  entities:
+    switch.ev1_r1:
+      state: on
+    switch.ev1_r2:
+      state: on
+    switch.ev1_r3:
+      state: on
+    switch.ev1_r4:
+      state: on
+- name: ev1_10A
+  entities:
+    switch.ev1_r1:
+      state: on
+    switch.ev1_r2:
+      state: on
+    switch.ev1_r3:
+      state: off
+    switch.ev1_r4:
+      state: on
+- name: ev1_16A
+  entities:
+    switch.ev1_r1:
+      state: off
+    switch.ev1_r2:
+      state: on
+    switch.ev1_r3:
+      state: off
+    switch.ev1_r4:
+      state: on
+- name: ev1_20A
+  entities:
+    switch.ev1_r1:
+      state: on
+    switch.ev1_r2:
+      state: off
+    switch.ev1_r3:
+      state: off
+    switch.ev1_r4:
+      state: on
+- name: ev1_25A
+  entities:
+    switch.ev1_r1:
+      state: off
+    switch.ev1_r2:
+      state: off
+    switch.ev1_r3:
+      state: off
+    switch.ev1_r4:
+      state: on
+- name: ev1_32A
+  entities:
+    switch.ev1_r1:
+      state: off
+    switch.ev1_r2:
+      state: off
+    switch.ev1_r3:
+      state: off
+    switch.ev1_r4:
+      state: off

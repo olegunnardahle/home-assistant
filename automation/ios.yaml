@@ -1,0 +1,14 @@
+- alias: 'Oppdater lokasjon'
+  trigger:
+    platform: time
+    at: "14:00:00"
+  action:    
+    - service: notify.iOS_ole_gunnar
+      data:
+        message: "request_location_update"
+    - service: notify.iOS_marianne
+      data:
+        message: "request_location_update"
+    - service: notify.iOS_josefine
+      data:
+        message: "request_location_update"

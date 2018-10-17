@@ -1,0 +1,4 @@
+grafana:
+  title: 'Grafana'
+  icon: mdi:elevation-rise
+  url: !secret grafana_url

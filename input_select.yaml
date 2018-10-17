@@ -1,0 +1,10 @@
+charging_current:
+  name: "Ladestrom"
+  options:
+    - "32A"
+    - "25A"
+    - "20A"  
+    - "16A" 
+    - "10A"  
+    - "AV"
+  initial: "20A"

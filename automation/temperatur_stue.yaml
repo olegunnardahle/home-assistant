@@ -1,0 +1,69 @@
+- alias: "Nattemp stue"
+  trigger:
+    platform: time
+    minutes: 0
+    seconds: 10
+  condition: 
+    condition: or
+    conditions:
+      - condition: and
+        conditions:
+        - condition: state 
+          entity_id: 'binary_sensor.workday_sensor'
+          state: 'on'
+        - condition: time 
+          after: "22:00:00"
+          before: "23:00:00"
+      - condition: and
+        conditions:
+        - condition: state 
+          entity_id: 'binary_sensor.workday_sensor'
+          state: 'off'
+        - condition: time 
+          after: "23:00:00"
+          before: "23:59:00"               
+  action:
+  - service: climate.set_temperature
+    entity_id: climate.termostat_stue
+    data:
+      temperature: '19'
+#########DAGTEMP STUE#############
+- alias: "Dagtemp uke"
+  trigger:
+    platform: time
+    minutes: 0
+    seconds: 10
+  condition: 
+    condition: or
+    conditions:
+      - condition: and
+        conditions:
+        - condition: state 
+          entity_id: 'binary_sensor.workday_sensor'
+          state: 'on'
+        - condition: time 
+          after: "12:00:00"
+          before: "13:00:00"
+      - condition: and
+        conditions:
+        - condition: state 
+          entity_id: 'binary_sensor.workday_sensor'
+          state: 'off'
+        - condition: time 
+          after: "06:00:00"
+          before: "06:59:00"                   
+  action:
+  - service: climate.set_temperature
+    entity_id: climate.termostat_stue
+    data:
+      temperature: '22'
+- alias: "fix heath" 
+  trigger:
+    - platform: state
+      entity_id: group.varme_stue
+      to: 'off'
+  action:
+  - service: climate.set_operation_mode
+    entity_id: climate.termostat_stue
+    data:
+      operation_mode: 'heat'

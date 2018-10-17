@@ -1,0 +1,6 @@
+- platform: pushbullet
+  name: olegunnar
+  api_key: !secret pushbullet_api_key_oleg
+- platform: pushbullet
+  name: marianne
+  api_key: !secret pushbullet_api_key_marianne

@@ -1,0 +1,35 @@
+- platform: mqtt
+  name: "EV1_R1"
+  state_topic: "/ev1/switchConfirm1/"
+  command_topic: "/ev1/switch1/"
+  payload_on: "1"
+  payload_off: "0"
+  qos: 0
+  retain: true    
+
+- platform: mqtt
+  name: "EV1_R2"
+  state_topic: "/ev1/switchConfirm2/"
+  command_topic: "/ev1/switch2/"
+  payload_on: "1"
+  payload_off: "0"
+  qos: 0
+  retain: true    
+
+- platform: mqtt
+  name: "EV1_R3"
+  state_topic: "/ev1/switchConfirm3/"
+  command_topic: "/ev1/switch3/"
+  payload_on: "1"
+  payload_off: "0"
+  qos: 0
+  retain: true    
+
+- platform: mqtt
+  name: "EV1_R4"
+  state_topic: "/ev1/switchConfirm4/"
+  command_topic: "/ev1/switch4/"
+  payload_on: "1"
+  payload_off: "0"
+  qos: 0
+  retain: true
