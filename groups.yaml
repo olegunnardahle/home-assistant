@@ -54,13 +54,6 @@ light_view:
   entities:
     - group.lys_stue
     - group.terrasse
-temperatur_view:
-  view: yes
-  name: Temperatur
-  icon: mdi:thermometer-lines
-  entities:
-    - sensor.yr_temperature
-    - group.varme_stue
 
 teknisk_view:
   view: yes
@@ -106,7 +99,6 @@ Varme_stue:
   name: Varme stue
   entities:
   - switch.panelovn_stue_switch
-  - climate.termostat_stue
   
 lys:
   name: "Lys"

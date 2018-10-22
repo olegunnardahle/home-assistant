@@ -1,7 +1,7 @@
 # STUE
 - platform: generic_thermostat
   name :  Termostat stue
-  heater :  switch.panelovn_stue_switch
+  heater :  group.varme_stue
   target_sensor : sensor.multisensor_spisestue_temperature
   target_temp : 22
   min_temp : 18
