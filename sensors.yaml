@@ -104,12 +104,6 @@
         - windstrength
         - guststrength
 - platform: scrape
-  resource: http://home.liabryggeri.no:99/
-  select: "span.t2"
-  name: "Beer temp"
-  unit_of_measurement: "°C"
-  value_template: '{{ ((value.split(" ")[0]) | replace ("ºC", "")) }}'
-- platform: scrape
   resource: https://www.timeanddate.no/nedtelling/jul
   name: "JUL"
   select: "#el_d1"
