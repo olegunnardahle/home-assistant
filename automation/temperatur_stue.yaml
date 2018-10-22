@@ -57,13 +57,3 @@
     entity_id: climate.termostat_stue
     data:
       temperature: '22'
-- alias: "fix heath" 
-  trigger:
-    - platform: state
-      entity_id: group.varme_stue
-      to: 'off'
-  action:
-  - service: climate.set_operation_mode
-    entity_id: climate.termostat_stue
-    data:
-      operation_mode: 'heat'
